@@ -1,6 +1,6 @@
 import Pair from "./Pair";
 
-const THRESHOLD = 0.6;
+const THRESHOLD = 0.25;
 const PERSON_1 = "person1";
 const PERSON_2 = "person2";
 const FITNESS_SCORE = "fitnessScore";
@@ -10,13 +10,9 @@ const getIndexOfARandomElement = array => {
   return pos;
 };
 
-function createPairs(data) {
-  let unpairedPeople = [];
+const createPairs = persons => {
+  let unpairedPeople = persons;
   let currentPopulation = [];
-
-  data.forEach(element => {
-    unpairedPeople.push(element);
-  });
 
   while (unpairedPeople.length > 1) {
     let firstPersonIndex = getIndexOfARandomElement(unpairedPeople);
@@ -27,13 +23,10 @@ function createPairs(data) {
     let secondPerson = unpairedPeople[secondPersonIndex];
     unpairedPeople.splice(secondPersonIndex, 1);
 
-    currentPopulation.add(Pair(firstPeron, secondPerson));
+    currentPopulation.push(Pair(firstPeron, secondPerson));
   }
 
-  let currentPopulationCopy = [];
-  currentPopulation.forEach(pair => {
-    currentPopulationCopy.add(pair);
-  });
+  let currentPopulationCopy = currentPopulation;
 
   currentPopulationCopy.forEach(element => {
     let pairIndex = getIndexOfARandomElement(currentPopulation);
@@ -125,9 +118,7 @@ function createPairs(data) {
 
     disseminationIterations -= 1;
   }
-
-  console.log("Unpaired people left = " + unpairedPeople.length);
   return currentPopulation;
-}
+};
 
 export default createPairs;

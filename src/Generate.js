@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import createPairs from "./PairCreation";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
@@ -17,9 +17,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Generate(persons) {
-  const pairs = createPairs(persons);
+const Generate = ({ persons }) => {
   const classes = useStyles();
+  const [pairs, setPairs] = useState([]);
+  useEffect(() => {
+    const defaultPairs = createPairs(persons);
+    setPairs(defaultPairs);
+  }, [persons]);
   return (
     <div className={classes.root}>
       {pairs.length === 0 && <Typography>No pairs found!</Typography>}
@@ -72,4 +76,6 @@ export default function Generate(persons) {
       ))}
     </div>
   );
-}
+};
+
+export default Generate;
