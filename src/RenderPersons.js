@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular
   }
 }));
-export default function RenderPersons(props) {
-  const persons = props.persons;
+export default function RenderPersons() {
+  const persons = JSON.parse(localStorage.getItem("persons"));
   const classes = useStyles();
-  console.log(persons);
+
   return (
     <div className={classes.root}>
       {persons.length === 0 && <Typography>No person found!</Typography>}

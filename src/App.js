@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { Container } from "@material-ui/core";
 import MenuBar from "./MenuBar";
@@ -215,14 +215,18 @@ export default function App() {
     let tempPersons = persons;
     tempPersons.push(personData);
     setPersons(tempPersons);
+    localStorage.setItem("persons", JSON.stringify(persons));
   };
+  useEffect(() => {
+    localStorage.setItem("persons", JSON.stringify(persons));
+  }, [persons]);
 
   return (
     <Container maxWidth="sm" fixed="true" className={classes.root}>
       <MenuBar setMode={setMode} />
       {mode === "add" && <AddPerson addPerson={addPerson} />}
-      {mode === "render" && <RenderPersons persons={persons} />}
-      {mode === "generate" && <Generate persons={persons} />}
+      {mode === "render" && <RenderPersons />}
+      {mode === "generate" && <Generate />}
     </Container>
   );
 }

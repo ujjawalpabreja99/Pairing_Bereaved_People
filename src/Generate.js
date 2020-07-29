@@ -17,13 +17,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Generate = ({ persons }) => {
+const Generate = () => {
   const classes = useStyles();
   const [pairs, setPairs] = useState([]);
   useEffect(() => {
-    const defaultPairs = createPairs(persons);
+    const defaultPairs = createPairs(
+      JSON.parse(localStorage.getItem("persons"))
+    );
     setPairs(defaultPairs);
-  }, [persons]);
+  }, []);
   return (
     <div className={classes.root}>
       {pairs.length === 0 && <Typography>No pairs found!</Typography>}

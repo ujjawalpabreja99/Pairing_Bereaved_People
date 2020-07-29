@@ -10,8 +10,8 @@ const getIndexOfARandomElement = array => {
   return pos;
 };
 
-const createPairs = persons => {
-  let unpairedPeople = persons;
+const createPairs = data => {
+  let unpairedPeople = JSON.parse(localStorage.getItem("persons")) || [];
   let currentPopulation = [];
 
   while (unpairedPeople.length > 1) {
@@ -118,6 +118,7 @@ const createPairs = persons => {
 
     disseminationIterations -= 1;
   }
+  console.log("DATA", data);
   return currentPopulation;
 };
 

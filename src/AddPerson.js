@@ -56,13 +56,13 @@ export default function AddPerson(props) {
           }}
         >
           <option aria-label="None" value="" />
-          <option value={"delhi"}>Delhi</option>
-          <option value={"maharashtra"}>Maharashtra</option>
-          <option value={"tamil nadu"}>Tamil Nadu</option>
-          <option value={"uttar pradesh"}>Uttar Pradesh</option>
-          <option value={"gujarat"}>Gujarat</option>
-          <option value={"rajasthan"}>Rajasthan</option>
-          <option value={"karnataka"}>Karnataka</option>
+          <option value={"Delhi"}>Delhi</option>
+          <option value={"Maharashtra"}>Maharashtra</option>
+          <option value={"Tamil Nadu"}>Tamil Nadu</option>
+          <option value={"Uttar Pradesh"}>Uttar Pradesh</option>
+          <option value={"Gujarat"}>Gujarat</option>
+          <option value={"Rajasthan"}>Rajasthan</option>
+          <option value={"Karnataka"}>Karnataka</option>
         </Select>
       </FormControl>
       <TextField
