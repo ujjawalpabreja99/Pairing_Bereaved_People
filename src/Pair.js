@@ -38,41 +38,45 @@ const distance = (location1, location2) => {
 };
 
 const Pair = (person1, person2) => {
-  let fitnessScore = 0;
+  let score = 0;
 
   if (person1.childLost === true && person2.parentLost === true) {
-    fitnessScore += 2;
+    score += 2;
   }
   if (person1.parentLost === true && person2.childLost === true) {
-    fitnessScore += 2;
+    score += 2;
   }
   if (person1.siblingLost === true && person2.siblingLost === true) {
-    fitnessScore += 2;
+    score += 2;
   }
   if (person1.disabled === true && person2.disabled === false) {
-    fitnessScore += 2;
+    score += 2;
   }
   if (person1.disabled === false && person2.disabled === true) {
-    fitnessScore += 2;
+    score += 2;
   }
 
   if (person1.disbaled === true && person2.disabled === true) {
-    fitnessScore += 1;
+    score += 1;
   }
   if (person1.childLost === true && person2.childLost === true) {
-    fitnessScore += 1;
+    score += 1;
   }
   if (person1.parentLost === true && person2.parentLost === true) {
-    fitnessScore += 1;
+    score += 1;
   }
 
   const distanceScore =
     (2 * (MAX_DISTANCE - distance(person1.location, person2.location))) /
     MAX_DISTANCE;
 
-  fitnessScore += distanceScore;
+  score += distanceScore;
 
-  return fitnessScore;
+  return {
+    person1: person1,
+    person2: person2,
+    fitnessScore: score
+  };
 };
 
 export default Pair;

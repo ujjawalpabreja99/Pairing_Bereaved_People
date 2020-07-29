@@ -7,7 +7,7 @@ export default function MenuBar(props) {
     <div style={{ paddingBottom: "10px", paddingLeft: "10px" }}>
       <ButtonGroup color="primary" aria-label="outlined button group">
         <Button onClick={() => setMode("add")}>Add a new person</Button>
-        <Button onClick={() => setMode("render")}>Render all people</Button>
+        <Button onClick={() => setMode("render")}>View all people</Button>
         <Button onClick={() => setMode("generate")}>Generate pairs</Button>
       </ButtonGroup>
     </div>

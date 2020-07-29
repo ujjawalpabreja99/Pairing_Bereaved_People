@@ -5,7 +5,9 @@ import {
   FormControlLabel,
   Button
 } from "@material-ui/core";
-
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 const defaultPersonData = {
   name: "",
   location: "",
@@ -17,7 +19,13 @@ const defaultPersonData = {
 };
 export default function AddPerson(props) {
   const [personData, setPersonData] = useState(defaultPersonData);
-
+  const handleChange = event => {
+    const name = event.target.name;
+    setPersonData({
+      ...personData,
+      [name]: event.target.value
+    });
+  };
   return (
     <form
       id="addPerson"
@@ -35,18 +43,28 @@ export default function AddPerson(props) {
         name="name"
         onChange={e => setPersonData({ ...personData, name: e.target.value })}
       />
-      <TextField
-        required
-        value={personData.location ? personData.location : ""}
-        style={{ padding: "2px" }}
-        id="location"
-        label="Location"
-        variant="outlined"
-        name="location"
-        onChange={e =>
-          setPersonData({ ...personData, location: e.target.value })
-        }
-      />
+      <FormControl variant="outlined" style={{ padding: "2px" }}>
+        <InputLabel htmlFor="outlined-age-native-simple">Location</InputLabel>
+        <Select
+          native
+          value={personData.location}
+          onChange={handleChange}
+          label="Location"
+          inputProps={{
+            name: "location",
+            id: "outlined-age-native-simple"
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={"delhi"}>Delhi</option>
+          <option value={"maharashtra"}>Maharashtra</option>
+          <option value={"tamil nadu"}>Tamil Nadu</option>
+          <option value={"uttar pradesh"}>Uttar Pradesh</option>
+          <option value={"gujarat"}>Gujarat</option>
+          <option value={"rajasthan"}>Rajasthan</option>
+          <option value={"karnataka"}>Karnataka</option>
+        </Select>
+      </FormControl>
       <TextField
         required
         value={personData.age ? personData.age : ""}

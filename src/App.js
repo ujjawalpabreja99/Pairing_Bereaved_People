@@ -5,6 +5,7 @@ import MenuBar from "./MenuBar";
 import RenderPersons from "./RenderPersons";
 import { makeStyles } from "@material-ui/core/styles";
 import AddPerson from "./AddPerson";
+import Generate from "./Generate";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +26,7 @@ export default function App() {
       <MenuBar setMode={setMode} />
       {mode === "add" && <AddPerson addPerson={addPerson} />}
       {mode === "render" && <RenderPersons persons={persons} />}
+      {mode === "generate" && <Generate persons={persons} />}
     </Container>
   );
 }
