@@ -1,21 +1,23 @@
 import React from "react";
 import { Container, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-export default class Header extends React.Component {
-  render() {
-    return (
-      <Container
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          minWidth: "600px",
-          maxWidth: "600px"
-        }}
-      >
-        <Typography style={{ fontSize: "40px", fontWeight: "100" }}>
-          Pairing Beareved People
-        </Typography>
-      </Container>
-    );
+const useStyles = makeStyles(theme => ({
+  root: {
+    justifyContent: "center",
+    display: "flex",
+    marginTop: "50px",
+    marginBottom: "50px"
   }
+}));
+
+export default function Header() {
+  const classes = useStyles();
+  return (
+    <Container className={classes.root}>
+      <Typography style={{ fontSize: "50px", fontWeight: "100" }}>
+        Pairing Beareved People
+      </Typography>
+    </Container>
+  );
 }
