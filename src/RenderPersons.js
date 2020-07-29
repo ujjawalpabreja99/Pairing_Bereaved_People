@@ -21,6 +21,7 @@ export default function RenderPersons(props) {
   console.log(persons);
   return (
     <div className={classes.root}>
+      {persons.length === 0 && <Typography>No person found!</Typography>}
       {persons.map(person => (
         <Accordion>
           <AccordionSummary

@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <Container className={classes.root}>
       <Typography style={{ fontSize: "50px", fontWeight: "100" }}>
-        Pairing Beareved People
+        Pairing Bereaved People
       </Typography>
     </Container>
   );
