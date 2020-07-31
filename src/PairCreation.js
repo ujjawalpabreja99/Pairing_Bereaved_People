@@ -1,6 +1,6 @@
 import Pair from "./Pair";
 
-const THRESHOLD = 0.25;
+const THRESHOLD = 0.5;
 const PERSON_1 = "person1";
 const PERSON_2 = "person2";
 const FITNESS_SCORE = "fitnessScore";

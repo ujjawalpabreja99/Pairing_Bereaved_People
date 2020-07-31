@@ -28,7 +28,7 @@ const Generate = () => {
   }, []);
   return (
     <div className={classes.root}>
-      {pairs.length === 0 && <Typography>No pairs found!</Typography>}
+      {pairs.length === 0 && <Typography>Generating pairs...</Typography>}
       {pairs.map(pair => (
         <Accordion>
           <AccordionSummary
