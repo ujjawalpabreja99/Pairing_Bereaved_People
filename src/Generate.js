@@ -37,7 +37,9 @@ const Generate = () => {
             id="panel1a-header"
           >
             <Typography className={classes.heading}>
-              {pair.person1.name} and {pair.person2.name}
+              <b>P1 - </b>
+              {pair.person1.name} and <b>P2 - </b>
+              {pair.person2.name}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
