@@ -6,49 +6,68 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Grid, Paper } from "@material-ui/core";
 
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     width: "100%"
+//   },
+//   heading: {
+//     fontSize: theme.typography.pxToRem(15),
+//     fontWeight: theme.typography.fontWeightRegular
+//   }
+// }));
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%"
+    flexGrow: 1
   },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular
+  paper: {
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    overflow: "auto"
   }
 }));
-
 const Generate = () => {
   const classes = useStyles();
   const [pairs, setPairs] = useState([]);
   useEffect(() => {
     const defaultPairs = createPairs(
       JSON.parse(localStorage.getItem("persons"))
-    );
+    ).sort(function(a, b) {
+      return a.fitnessScore - b.fitnessScore;
+    });
     setPairs(defaultPairs);
   }, []);
   return (
     <div className={classes.root}>
-      {pairs.length === 0 && <Typography>Generating pairs...</Typography>}
+      {pairs.length === 0 && (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Typography>Generating pairs...</Typography>
+        </div>
+      )}
+      {pairs.length > 0 && (
+        <Grid container spacing={1}>
+          <Grid item xs={5}>
+            <Paper className={classes.paper}>Person 1</Paper>
+          </Grid>
+          <Grid item xs={5}>
+            <Paper className={classes.paper}>Person 2</Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper className={classes.paper}>Fitness Score</Paper>
+          </Grid>
+        </Grid>
+      )}
       {pairs.map(pair => (
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading}>
-              <b>P1 - </b>
-              {pair.person1.name} and <b>P2 - </b>
-              {pair.person2.name}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              <b>Person 1</b>
+        <Grid container spacing={1}>
+          <Grid item xs={5}>
+            <Paper className={classes.paper}>
+              Name : {pair.person1.name}
               <br />
               Age : {pair.person1.age}
               <br />
-              Location : {pair.person1.location}
+              City : {pair.person1.location}
               <br />
               Child Lost? : {pair.person1.childLost === true ? "Yes" : "No"}
               <br />
@@ -57,12 +76,15 @@ const Generate = () => {
               Parent Lost? : {pair.person1.parentLost === true ? "Yes" : "No"}
               <br />
               Disabled? : {pair.person1.disabled === true ? "Yes" : "No"}
-              <br />
-              <b>Person 2</b>
+            </Paper>
+          </Grid>
+          <Grid item xs={5}>
+            <Paper className={classes.paper}>
+              Name : {pair.person2.name}
               <br />
               Age : {pair.person2.age}
               <br />
-              Location : {pair.person2.location}
+              City : {pair.person2.location}
               <br />
               Child Lost? : {pair.person2.childLost === true ? "Yes" : "No"}
               <br />
@@ -71,12 +93,14 @@ const Generate = () => {
               Parent Lost? : {pair.person2.parentLost === true ? "Yes" : "No"}
               <br />
               Disabled? : {pair.person2.disabled === true ? "Yes" : "No"}
-              <br />
-              <b> Fitness Score : </b>
+            </Paper>
+          </Grid>
+          <Grid item xs={2}>
+            <Paper className={classes.paper} style={{ height: "156px" }}>
               {pair.fitnessScore}
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
+            </Paper>
+          </Grid>
+        </Grid>
       ))}
     </div>
   );

@@ -32,7 +32,7 @@ export default function App() {
   }, [persons]);
 
   return (
-    <Container maxWidth="sm" fixed="true" className={classes.root}>
+    <Container maxWidth="lg" fixed="true" className={classes.root}>
       <MenuBar setMode={setMode} />
       {mode === "add" && <AddPerson addPerson={addPerson} />}
       {mode === "render" && <RenderPersons />}
