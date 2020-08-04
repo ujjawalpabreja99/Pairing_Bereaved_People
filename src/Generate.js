@@ -44,7 +44,7 @@ const Generate = () => {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              <h3>Person 1</h3>
+              <b>Person 1</b>
               <br />
               Age : {pair.person1.age}
               <br />
@@ -58,7 +58,7 @@ const Generate = () => {
               <br />
               Disabled? : {pair.person1.disabled === true ? "Yes" : "No"}
               <br />
-              <h3>Person 2</h3>
+              <b>Person 2</b>
               <br />
               Age : {pair.person2.age}
               <br />
@@ -72,7 +72,7 @@ const Generate = () => {
               <br />
               Disabled? : {pair.person2.disabled === true ? "Yes" : "No"}
               <br />
-              <h3> Fitness Score </h3>
+              <b> Fitness Score : </b>
               {pair.fitnessScore}
             </Typography>
           </AccordionDetails>
