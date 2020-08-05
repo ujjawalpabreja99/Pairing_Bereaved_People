@@ -17,13 +17,14 @@ const DataGeneration = () => {
     const name = uniqueNamesGenerator({
       dictionaries: [adjectives, colors, animals]
     });
-    const age = getRandomValue(60).toString();
+    const age = getRandomValue(80).toString();
     const cityIndex = Math.min(
       getRandomValue(cities.length),
       cities.length - 1
     );
     const city = cities[cityIndex];
-    const childLost = getRandomValue(10) > 5 ? true : false;
+    const childLost =
+      getRandomValue(10) > 5 && Number(age) >= 18 ? true : false;
     const siblingLost = getRandomValue(10) > 5 ? true : false;
     const parentLost = getRandomValue(10) > 5 ? true : false;
     const disabled = getRandomValue(10) > 5 ? true : false;

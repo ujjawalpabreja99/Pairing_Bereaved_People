@@ -21,9 +21,7 @@ const GeneratePairs = ({ persons }) => {
   const [pairs, setPairs] = useState([]);
 
   useEffect(() => {
-    const defaultPairs = createPairs(persons).sort(function(a, b) {
-      return a.fitnessScore - b.fitnessScore;
-    });
+    const defaultPairs = createPairs(persons);
     setPairs(defaultPairs);
   }, [persons]);
 
