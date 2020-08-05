@@ -26,7 +26,8 @@ const DataGeneration = () => {
     const childLost =
       getRandomValue(10) > 5 && Number(age) >= 18 ? true : false;
     const siblingLost = getRandomValue(10) > 5 ? true : false;
-    const parentLost = getRandomValue(10) > 5 ? true : false;
+    const parentLost =
+      getRandomValue(10) > 5 && Number(age) <= 60 ? true : false;
     const disabled = getRandomValue(10) > 5 ? true : false;
     data.push({
       name: name,
