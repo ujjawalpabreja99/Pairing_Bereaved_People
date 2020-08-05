@@ -15,15 +15,18 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto"
   }
 }));
-const Generate = () => {
+
+const GeneratePairs = ({ persons }) => {
   const classes = useStyles();
   const [pairs, setPairs] = useState([]);
+
   useEffect(() => {
-    const defaultPairs = createPairs().sort(function(a, b) {
+    const defaultPairs = createPairs(persons).sort(function(a, b) {
       return a.fitnessScore - b.fitnessScore;
     });
     setPairs(defaultPairs);
-  }, []);
+  }, [persons]);
+
   return (
     <div className={classes.root}>
       {pairs.length === 0 && (
@@ -91,4 +94,4 @@ const Generate = () => {
   );
 };
 
-export default Generate;
+export default GeneratePairs;

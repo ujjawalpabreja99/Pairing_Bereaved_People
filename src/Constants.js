@@ -118,3 +118,8 @@ export const distanceBetweenCities = [
     0
   ]
 ];
+
+export const THRESHOLD = 0.4;
+export const PERSON_1 = "person1";
+export const PERSON_2 = "person2";
+export const FITNESS_SCORE = "fitnessScore";

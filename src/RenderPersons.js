@@ -14,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto"
   }
 }));
-export default function RenderPersons() {
-  const persons = JSON.parse(localStorage.getItem("persons"));
+export default function RenderPersons(props) {
+  const persons = props.persons;
   const classes = useStyles();
 
   return (
@@ -56,7 +56,9 @@ export default function RenderPersons() {
             <Paper className={classes.paper}>{person.name}</Paper>
           </Grid>
           <Grid item xs={1}>
-            <Paper className={classes.paper}>{person.age}</Paper>
+            <Paper className={classes.paper}>
+              {person.age < 1 ? `< 1` : `${person.age}`}
+            </Paper>
           </Grid>
           <Grid item xs={2}>
             <Paper className={classes.paper}>{person.location}</Paper>

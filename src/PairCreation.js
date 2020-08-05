@@ -1,18 +1,13 @@
 import Pair from "./Pair";
-
-const THRESHOLD = 0.4;
-const PERSON_1 = "person1";
-const PERSON_2 = "person2";
-const FITNESS_SCORE = "fitnessScore";
+import { THRESHOLD, PERSON_1, PERSON_2, FITNESS_SCORE } from "./Constants";
 
 const getIndexOfARandomElement = array => {
   const pos = Math.floor(Math.random() * array.length);
   return pos;
 };
 
-const createPairs = () => {
-  let unpairedPeople = JSON.parse(localStorage.getItem("persons"));
-  console.log(unpairedPeople);
+const createPairs = persons => {
+  let unpairedPeople = persons;
   let currentPopulation = [];
 
   while (unpairedPeople.length > 1) {
@@ -83,7 +78,7 @@ const createPairs = () => {
     crossoverIterations -= 1;
   }
 
-  let disseminationIterations = 8000;
+  let disseminationIterations = 5000;
   while (disseminationIterations > 0 && unpairedPeople.length > 1) {
     let pairsToBeDeleted = Math.max(currentPopulation.length / 5, 1);
     while (pairsToBeDeleted > 0) {
@@ -97,7 +92,7 @@ const createPairs = () => {
       pairsToBeDeleted -= 1;
     }
 
-    let innerIterations = 800;
+    let innerIterations = 5000;
     while (innerIterations > 0 && unpairedPeople.length > 1) {
       let firstPeronIndex = getIndexOfARandomElement(unpairedPeople);
       let firstPerson = unpairedPeople[firstPeronIndex];
@@ -119,7 +114,7 @@ const createPairs = () => {
 
     disseminationIterations -= 1;
   }
-  // console.log("DATA", data);
+
   return currentPopulation;
 };
 
