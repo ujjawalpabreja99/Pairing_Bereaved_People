@@ -22,15 +22,15 @@ export default function App() {
   const [persons, setPersons] = useState(defaultPersons);
 
   const addPerson = personData => {
-    let tempPersons = persons;
+    let tempPersons = JSON.parse(localStorage.getItem("persons"));
     tempPersons.push(personData);
-    setPersons(tempPersons);
-    localStorage.setItem("persons", JSON.stringify(persons));
+    localStorage.setItem("persons", JSON.stringify(tempPersons));
   };
-  useEffect(() => {
-    localStorage.setItem("persons", JSON.stringify(persons));
-  }, [persons]);
 
+  // useEffect(() => {
+  //   localStorage.setItem("persons", JSON.stringify(persons));
+  // }, [persons]);
+  console.log("DEF", JSON.parse(localStorage.getItem("persons")));
   return (
     <Container maxWidth="lg" fixed="true" className={classes.root}>
       <MenuBar setMode={setMode} />

@@ -1,6 +1,6 @@
 import Pair from "./Pair";
 
-const THRESHOLD = 0.5;
+const THRESHOLD = 0.4;
 const PERSON_1 = "person1";
 const PERSON_2 = "person2";
 const FITNESS_SCORE = "fitnessScore";
@@ -10,8 +10,9 @@ const getIndexOfARandomElement = array => {
   return pos;
 };
 
-const createPairs = data => {
-  let unpairedPeople = JSON.parse(localStorage.getItem("persons")) || [];
+const createPairs = () => {
+  let unpairedPeople = JSON.parse(localStorage.getItem("persons"));
+  console.log(unpairedPeople);
   let currentPopulation = [];
 
   while (unpairedPeople.length > 1) {
@@ -118,7 +119,7 @@ const createPairs = data => {
 
     disseminationIterations -= 1;
   }
-  console.log("DATA", data);
+  // console.log("DATA", data);
   return currentPopulation;
 };
 

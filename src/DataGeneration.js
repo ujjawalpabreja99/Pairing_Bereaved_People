@@ -1,19 +1,10 @@
-var {
+import {
   uniqueNamesGenerator,
   adjectives,
   colors,
   animals
-} = require("unique-names-generator");
-
-const cities = [
-  "Delhi",
-  "Tamil Nadu",
-  "Maharashtra",
-  "Karnataka",
-  "Uttar Pradesh",
-  "Gujarat",
-  "Rajasthan"
-];
+} from "unique-names-generator";
+import { cities } from "./Constants";
 
 const getRandomValue = range => {
   return Math.floor(Math.random() * range);

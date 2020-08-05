@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from "react";
 import createPairs from "./PairCreation";
 import { makeStyles } from "@material-ui/core/styles";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Grid, Paper } from "@material-ui/core";
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     width: "100%"
-//   },
-//   heading: {
-//     fontSize: theme.typography.pxToRem(15),
-//     fontWeight: theme.typography.fontWeightRegular
-//   }
-// }));
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -32,9 +19,7 @@ const Generate = () => {
   const classes = useStyles();
   const [pairs, setPairs] = useState([]);
   useEffect(() => {
-    const defaultPairs = createPairs(
-      JSON.parse(localStorage.getItem("persons"))
-    ).sort(function(a, b) {
+    const defaultPairs = createPairs().sort(function(a, b) {
       return a.fitnessScore - b.fitnessScore;
     });
     setPairs(defaultPairs);

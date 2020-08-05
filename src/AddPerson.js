@@ -8,16 +8,9 @@ import {
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-const defaultPersonData = {
-  name: "",
-  location: "",
-  age: "",
-  childLost: false,
-  siblingLost: false,
-  parentLost: false,
-  disabled: false
-};
-export default function AddPerson(props) {
+import { defaultPersonData, cities } from "./Constants";
+
+const AddPerson = props => {
   const [personData, setPersonData] = useState(defaultPersonData);
   const handleChange = event => {
     const name = event.target.name;
@@ -33,6 +26,14 @@ export default function AddPerson(props) {
         style={{ display: "block" }}
         noValidate
         autoComplete="off"
+        onSubmit={() => {
+          if (!personData.name || !personData.age || !personData.location) {
+            alert("Name, Age and Location are a necessary field");
+          } else {
+            props.addPerson(personData);
+            setPersonData(defaultPersonData);
+          }
+        }}
       >
         <TextField
           required
@@ -57,13 +58,9 @@ export default function AddPerson(props) {
             }}
           >
             <option aria-label="None" value="" />
-            <option value={"Delhi"}>Delhi</option>
-            <option value={"Maharashtra"}>Maharashtra</option>
-            <option value={"Tamil Nadu"}>Tamil Nadu</option>
-            <option value={"Uttar Pradesh"}>Uttar Pradesh</option>
-            <option value={"Gujarat"}>Gujarat</option>
-            <option value={"Rajasthan"}>Rajasthan</option>
-            <option value={"Karnataka"}>Karnataka</option>
+            {cities.map(city => (
+              <option value={city}>{city}</option>
+            ))}
           </Select>
         </FormControl>
         <TextField
@@ -154,4 +151,6 @@ export default function AddPerson(props) {
       </form>
     </div>
   );
-}
+};
+
+export default AddPerson;
